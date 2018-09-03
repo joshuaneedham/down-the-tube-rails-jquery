@@ -1,0 +1,21 @@
+<div class="d-md-flex flex-md-wrap">
+    <div class="card-group">
+        <div class="p-5">
+            <div class="card mb-3" style="min-width: 18rem;">
+                <div class="card-body">
+                    <h1>
+                    <%= @firearm.name %>
+                    </h1>
+                    <h4>Type</h4>
+                    <%= @firearm.firearm_type %>
+                    <h4>Description</h4>
+                    <%= @firearm.description %>
+                    
+                    <%= link_to  "Back", firearms_path, class: "btn btn-outline-secondary" %>
+                    <%= link_to  "Edit Firearm", edit_firearm_path(@firearm), class: "btn btn-outline-warning"  %>
+                    <%= link_to 'Destroy', firearm_path(@firearm), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

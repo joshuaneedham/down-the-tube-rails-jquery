@@ -1,0 +1,11 @@
+<%= form_for([@user, @firearm]) do |f| %>
+  <h5><%= f.label :name, "Name" %></h5>
+    <%= f.text_field :name %> <br>
+  <h5><%= f.label :firearm_type, "Type" %></h5>
+  <%= f.select :firearm_type, options_for_select(["Bolt-Action","Semi-Auto","Muzzle Loader","Shotgun",], @firearm.firearm_type), selected: true %>
+  <h5><%= f.label :description,   "Description" %></h5>
+    <%= f.text_area :description %> <br>
+
+    
+<%= f.submit 'Create Firearm', class: "btn btn-primary" %>
+<% end %>

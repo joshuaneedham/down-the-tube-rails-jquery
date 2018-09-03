@@ -1,0 +1,8 @@
+<h2>Edit a firearm</h2>
+<%= form_for(@firearm) do |f| %>
+    <h5><%= f.label :name, "Name" %></h5><%= f.text_field :name %> <br>
+    <h5><%= f.label :firearm_type, "Type" %></h5><%= f.text_field :firearm_type %> <br>
+    <h5><%= f.label :description, "Description" %></h5><%= f.text_area :description %> <br>
+    <%= f.submit 'Update Firearm', class: "btn btn-primary" %>
+<% end %>
+<%= link_to  "Back", firearms_path, class: "btn btn-outline-secondary" %>
