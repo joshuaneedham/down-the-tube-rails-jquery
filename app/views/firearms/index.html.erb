@@ -1,21 +1,4 @@
-<div class="d-md-flex flex-md-wrap">
-    <% @firearms.each do |f| %>
-    <div class="p-5">
-        <h2>
-        <%= f.name %>
-        </h2>
-        <h4>Type of firearm:</h4>
-        <%= f.firearm_type %>
-        <h4>Description</h4>
-        <%= f.description %>
-        
-        <br><br>
-        <%= link_to  "Show", firearm_path(f), class: "btn btn-outline-success" %>
-        <%= link_to  "Edit", edit_firearm_path(f), class: "btn btn-outline-warning" %>
-        <%= link_to 'Destroy', firearm_path(f), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-    </div>
-    <% end %>
-</div>
+
 <div id="firearms">
 </div>
 <br>

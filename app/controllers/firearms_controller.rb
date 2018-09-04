@@ -4,9 +4,9 @@ class FirearmsController < ApplicationController
 
   def index
     @firearms = current_user.firearms.all
-    respond_to do |format|
-      format.html { render :index }
-      format.json {render json: @firearms}
+    respond_to do |f|
+      f.html { render :index }
+      f.json {render json: @firearms}
     end
   end
 

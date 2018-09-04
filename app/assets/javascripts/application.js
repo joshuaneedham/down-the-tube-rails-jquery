@@ -18,6 +18,7 @@
 //= require_tree .
 
 
-$(document).ready(function () {
-  $("#firearms").append("<span>This is a test</span>");
-});
+// $(document).ready(function () {
+//   $("#firearms").append("<span>This is a test</span>");
+// });
+
