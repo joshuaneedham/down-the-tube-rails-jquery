@@ -1,39 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Barrels</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Caliber</th>
-      <th>Barrel type</th>
-      <th>Length</th>
-      <th>Twist</th>
-      <th>Contour</th>
-      <th>Rifling</th>
-      <th>Firearm</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @barrels.each do |barrel| %>
-      <tr>
-        <td><%= barrel.caliber %></td>
-        <td><%= barrel.barrel_type %></td>
-        <td><%= barrel.length %></td>
-        <td><%= barrel.twist %></td>
-        <td><%= barrel.contour %></td>
-        <td><%= barrel.rifling %></td>
-        <td><%= barrel.firearm %></td>
-        <td><%= link_to 'Show', barrel %></td>
-        <td><%= link_to 'Edit', edit_barrel_path(barrel) %></td>
-        <td><%= link_to 'Destroy', barrel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<h1><%= current_user.first_name %>'s Barrels</h1>
+<div class="d-md-flex flex-md-wrap">
+  <div class="card-group">
+    <% @barrels.each do |b| %>
+    <div class="p-3">
+      <div class="card mb-3" style="min-width: 18rem;">
+        <div class="card-body">
+          <h2>Caliber:</h2>
+          <span class="align-text-middle"><%= b.caliber %></span>
+          <h4>Type:</h4>
+          <span class="align-text-middle"><%= b.barrel_type %></span>
+          <h4>Length:</h4>
+          <span class="align-text-middle"><%= b.length %>"</span>
+          <% if b.twist == nil %>
+          <h4>Twist:</h4>
+          <span class="align-text-middle">N/A</span>
+          <% else %>
+          <h4>Twist:</h4>
+          <span class="align-text-middle">1:<%= b.twist %></span>
+          <% end %>
+          <h4>Contour:</h4>
+          <span class="align-text-middle"><%= b.contour %></span>
+          <h4>Rifling:</h4>
+          <span class="align-text-middle"><%= b.rifling %></span>
+          <h5>Firearm:</h5>
+          <%= link_to b.firearm.name, firearm_path(b.firearm.id) %>
+          <br><br>
+          <%= link_to 'Show', barrel_path(b), class: "card-link btn btn-primary" %>
+          <%= link_to 'Edit', edit_barrel_path(b), class: "card-link btn btn-warning" %>
+        <%= link_to 'Destroy', barrel_path(b), method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link btn btn-danger" %></div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Barrel', new_barrel_path %>
+  </div>
+</div>
+<br><br>
+<div class="d-flex justify-content-around">
+  <%= link_to 'New Barrel', new_barrel_path, class: "btn btn-outline-success" %>
+</div>

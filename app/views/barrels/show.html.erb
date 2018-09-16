@@ -1,39 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Caliber:</strong>
-  <%= @barrel.caliber %>
-</p>
-
-<p>
-  <strong>Barrel type:</strong>
-  <%= @barrel.barrel_type %>
-</p>
-
-<p>
-  <strong>Length:</strong>
-  <%= @barrel.length %>
-</p>
-
-<p>
-  <strong>Twist:</strong>
-  <%= @barrel.twist %>
-</p>
-
-<p>
-  <strong>Contour:</strong>
-  <%= @barrel.contour %>
-</p>
-
-<p>
-  <strong>Rifling:</strong>
-  <%= @barrel.rifling %>
-</p>
-
-<p>
-  <strong>Firearm:</strong>
-  <%= @barrel.firearm %>
-</p>
-
-<%= link_to 'Edit', edit_barrel_path(@barrel) %> |
-<%= link_to 'Back', barrels_path %>
+<h1><%= current_user.first_name %>'s Barrels</h1>
+<div class="d-md-flex flex-md-wrap">
+  <div class="card-group">
+    <div class="p-3"><div class="card mb-3" style="min-width: 18rem;">
+      <div class="card-body">
+        <h5>Caliber:</h5>
+          <%= @barrel.caliber %>
+          <h5>Type:</h5>
+          <%= @barrel.barrel_type %>
+          <h5>Length:</h5>
+          <%= @barrel.length %>"
+          <% if @barrel.twist == nil %>
+          <h4>Twist:</h4>
+          N/A
+          <% else %>
+          <h4>Twist:</h4>
+          1:<%= @barrel.twist %>
+          <% end %>
+          <h5>Contour:</h5>
+          <%= @barrel.contour %>
+          <h5>Rifling:</h5>
+          <%= @barrel.rifling %>
+          <h5>Firearm:</h5>
+          <%= link_to @barrel.firearm.name, firearm_path(@barrel.firearm.id) %>
+          <br><br>
+          <%= link_to 'Back', barrels_path, class: "card-link btn btn-primary" %>
+          <%= link_to 'Edit', edit_barrel_path(@barrel), class: "card-link btn btn-warning" %>
+        <%= link_to 'Destroy', barrel_path(@barrel), method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link btn btn-danger" %></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,11 @@
                     <%= @firearm.firearm_type %>
                     <h4>Description</h4>
                     <%= @firearm.description %>
-                    
+                    <h4>Current barrel:</h4>
+                    <%= link_to @firearm.barrels.last.caliber, barrel_path(@firearm.barrels.last.id)%>
+                    <h4><b>ADD THIS!!</b><br>Total shots fired from current barrel</h4>
+                    <%#= @firearm.outings.sum(:shots_fired) %>
+                    <br><br>
                     <%= link_to  "Back", firearms_path, class: "btn btn-outline-secondary" %>
                     <%= link_to  "Edit Firearm", edit_firearm_path(@firearm), class: "btn btn-outline-warning"  %>
                     <%= link_to 'Destroy', firearm_path(@firearm), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
