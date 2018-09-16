@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_26_171316) do
+ActiveRecord::Schema.define(version: 2018_09_16_090446) do
+
+  create_table "barrels", force: :cascade do |t|
+    t.string "caliber"
+    t.string "barrel_type"
+    t.decimal "length", precision: 4, scale: 4
+    t.decimal "twist", precision: 4, scale: 4
+    t.string "contour"
+    t.string "rifling"
+    t.integer "firearm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["firearm_id"], name: "index_barrels_on_firearm_id"
+  end
 
   create_table "firearms", force: :cascade do |t|
     t.string "name"

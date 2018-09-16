@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Caliber:</strong>
+  <%= @barrel.caliber %>
+</p>
+
+<p>
+  <strong>Barrel type:</strong>
+  <%= @barrel.barrel_type %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @barrel.length %>
+</p>
+
+<p>
+  <strong>Twist:</strong>
+  <%= @barrel.twist %>
+</p>
+
+<p>
+  <strong>Contour:</strong>
+  <%= @barrel.contour %>
+</p>
+
+<p>
+  <strong>Rifling:</strong>
+  <%= @barrel.rifling %>
+</p>
+
+<p>
+  <strong>Firearm:</strong>
+  <%= @barrel.firearm %>
+</p>
+
+<%= link_to 'Edit', edit_barrel_path(@barrel) %> |
+<%= link_to 'Back', barrels_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Barrels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Caliber</th>
+      <th>Barrel type</th>
+      <th>Length</th>
+      <th>Twist</th>
+      <th>Contour</th>
+      <th>Rifling</th>
+      <th>Firearm</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @barrels.each do |barrel| %>
+      <tr>
+        <td><%= barrel.caliber %></td>
+        <td><%= barrel.barrel_type %></td>
+        <td><%= barrel.length %></td>
+        <td><%= barrel.twist %></td>
+        <td><%= barrel.contour %></td>
+        <td><%= barrel.rifling %></td>
+        <td><%= barrel.firearm %></td>
+        <td><%= link_to 'Show', barrel %></td>
+        <td><%= link_to 'Edit', edit_barrel_path(barrel) %></td>
+        <td><%= link_to 'Destroy', barrel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Barrel', new_barrel_path %>
