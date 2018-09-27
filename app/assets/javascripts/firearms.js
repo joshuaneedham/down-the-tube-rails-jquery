@@ -21,6 +21,7 @@ const bindClickHandlers = () => {
           console.log(firearmHtml)
           $('#app-container').append(firearmHtml).wrapInner('<div class="d-md-flex flex-md-wrap"><div class="card-group"></div></div>')
         });
+
       })
   }) // End Firearms Link
   // Begin Firearms add link
@@ -48,6 +49,6 @@ Firearm.prototype.formatIndex = function () {
   </div>
   </div>
   </div>
-  `
+   `
   return firearmHtml
 } // End Firearm prototype
