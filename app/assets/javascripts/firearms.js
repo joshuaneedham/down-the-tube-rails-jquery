@@ -19,7 +19,7 @@ const bindClickHandlers = () => {
           let newFirearm = new Firearm(firearm)
           let firearmHtml = newFirearm.formatIndex()
           console.log(firearmHtml)
-          $('#app-container').append(firearmHtml)
+          $('#app-container').append(firearmHtml).wrapInner('<div class="d-md-flex flex-md-wrap"><div class="card-group"></div></div>')
         });
       })
   }) // End Firearms Link
@@ -37,12 +37,16 @@ function Firearm(firearm) {
 Firearm.prototype.formatIndex = function () {
   console.log(this)
   let firearmHtml = `
-  <div class="p-5">
+  <div class="p-3">
+  <div class="card mb-3" style="min-width: 18rem;">
+  <div class="card-body">
   <h1>${this.name}</h1>
   <h4>Firearm Description</h4>
   <p>${this.description}</p>
   <h4>Firearm Type</h4>
   <p>${this.firearm_type}</p>
+  </div>
+  </div>
   </div>
   `
   return firearmHtml
