@@ -21,7 +21,7 @@ const bindClickHandlers = () => {
           console.log(firearmHtml)
           $('#app-container').append(firearmHtml).wrapInner('<div class="d-md-flex flex-md-wrap"><div class="card-group"></div></div>')
         });
-
+        $('#app-container').append('<div class="d-flex justify-content-around"><a class="btn btn-outline-success" href="/firearms/new">New Firearm</a></div>')
       })
   }) // End Firearms Link
   // Begin Firearms add link
