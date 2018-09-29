@@ -17,17 +17,7 @@
 //= require_tree .
 
 
-// $(document).ready(function () {
-//   $("#firearms").append("<span>This is a test</span>");
-// });
-
-// const fetchRequest = fetch('https://localhost:3000/firearms')
-//   .then(function (response) {
-//     response.json(data)
-//   })
-//   .then(function (data) {
-//     console.log(data)
-//   })
-//   .then(function (success) {
-//     console.log(success)
-//   })
+$(() => {
+  firearmsClickHandlers()
+  barrelsClickHandlers()
+})

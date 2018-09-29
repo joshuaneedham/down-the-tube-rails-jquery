@@ -1,9 +1,5 @@
-$(() => {
-  bindClickHandlers()
-})
-
 // Hijack the click function for the 'firearms' button in the navigation.
-const bindClickHandlers = () => {
+const firearmsClickHandlers = () => {
   // Using data attribute for targeting instead of .class or #id
   $('[data-list-firearms-link]').on('click', (e) => {
     e.preventDefault()

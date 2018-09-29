@@ -5,6 +5,10 @@ class BarrelsController < ApplicationController
 
   def index
     @barrels = current_user.barrels.all
+    respond_to do |b|
+      b.html { render :index }
+      b.json {render json: @barrels}
+    end
   end
 
   def show

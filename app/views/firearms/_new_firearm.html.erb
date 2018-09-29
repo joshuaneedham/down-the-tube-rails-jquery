@@ -6,6 +6,6 @@
   <h5><%= f.label :description,   "Description" %></h5>
     <%= f.text_area :description %> <br>
 
-    
-<%= f.submit 'Create Firearm', class: "btn btn-primary" %>
+
+<%= f.submit 'Create Firearm', class: "btn btn-primary" , data: {'create-firearm-link' => true} %>
 <% end %>
