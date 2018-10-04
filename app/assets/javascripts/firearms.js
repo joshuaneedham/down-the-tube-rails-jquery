@@ -42,6 +42,12 @@ Firearm.prototype.formatIndex = function () {
   <p>${this.description}</p>
   <h4>Firearm Type</h4>
   <p>${this.firearm_type}</p>
+  <br>
+  <div class="d-flex justify-content-around">
+  <a href="/firearms/${this.id}" class="btn btn-primary">Show</a>
+  <a href="/firearms/${this.id}/edit" class="btn btn-warning">Edit</a>
+  <button class="btn btn-danger">Add Delete</button>
+  </div>
   </div>
   </div>
   </div>

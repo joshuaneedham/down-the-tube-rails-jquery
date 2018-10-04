@@ -1,6 +1,7 @@
 # User object controller
 class User < ApplicationRecord
   has_many :firearms
+  has_many :outings
   has_many :barrels, through: :firearms
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

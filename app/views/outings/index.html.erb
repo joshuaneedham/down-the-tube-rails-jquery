@@ -1,0 +1,41 @@
+<h1><%= current_user.first_name %>'s Outings</h1>
+<div class="">
+
+</div>
+    <p>Below you will see the last firearm you used for each of the outing types available.</p>
+      <h2>Range</h2>
+      <%= render  partial: "range" || "Please add Range outing." %>
+      <h2>Hunting</h2>
+      <%= render partial: "hunting" || "Please add Hunting outing." %>
+      <h2>Match - Competition</h2>
+      <%= render partial: "comp_match" || "Please add Match or Competition outing" %>
+      </div>
+<div class="d-md-flex flex-md-wrap">
+  <div class="card-group">
+    <% @outings.each do |o| %>
+    <div class="p-3">
+      <div class="card mb-3" style="min-width: 18rem;">
+        <div class="card-body">
+          <h4>Outing Type:</h4>
+          <%= o.outing_type %>
+          <h4>Outing Date:</h4>
+          <%= o.date.strftime("%B %d, %Y") %>
+          <h4>Shots Fired:</h4>
+          <%= o.shots_fired %>
+          <h5>Firearm:</h5>
+          <%= link_to o.firearm.name, firearm_path(o.firearm.id) %>
+          <br><br>
+          <br>
+          <%= link_to 'Show', outing_path(o), class: "btn btn-primary" %>
+          <%= link_to 'Edit', edit_outing_path(o), class: "btn btn-warning" %>
+        <%= link_to 'Destroy', outing_path(o), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></div>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+<br><br>
+<div class="d-flex justify-content-around">
+  <%= link_to 'New Outing', new_outing_path, class: "btn btn-outline-success" %>
+</div>

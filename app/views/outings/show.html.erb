@@ -1,0 +1,13 @@
+<h1><%= current_user.first_name %>'s Outings</h1>
+  <h5>Date of outing:</h5>
+    <%= @outing.date.strftime("%B %d, %Y") %>
+  <h5>Outing Type:</h5>
+  <%= @outing.outing_type %>
+  <h5>Shots Fired:</h5>
+    <%= @outing.shots_fired %>
+  <h5>Firearm:</h5>
+    <%= link_to @outing.firearm.name, firearm_path(@outing.firearm.id) %>
+  <br><br>
+<%= link_to 'Edit', edit_outing_path(@outing), class: "btn btn-outline-warning" %>
+<%= link_to 'Back', outings_path, class: "btn btn-outline-secondary" %>
+<%= link_to 'Destroy', outing_path(@outing), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>

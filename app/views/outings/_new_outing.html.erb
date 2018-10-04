@@ -1,0 +1,26 @@
+<h1>New Outing</h1>
+<%= form_for(@outing) do |f| %>
+  <% if outing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(outing.errors.count, "error") %> prohibited this barrel from being saved:</h2>
+
+      <ul>
+      <% outing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h5><%= f.label :outing_type, "Type" %></h5>
+    <%= f.select :outing_type, options_for_select(["Match - Competition","Hunting","Range",], @outing.outing_type), selected: true %>
+  <h5><%= f.label :date %></h5>
+    <%= f.date_select('date', order: [:month, :day, :year]) %>
+
+  <h5><%= f.label "Select firearm" %></h5>
+    <%= f.collection_select :firearm_id, current_user.firearms, :id, :name, include_blank: "Select firearm" %>
+  <h5><%= f.label :shots_fired %></h5>
+    <%= f.text_field :shots_fired, id: :outing_shots_fired %>
+
+<br><br>
+   <%= f.submit 'Create Outing', class: "btn btn-primary" %>
+  <% end %>

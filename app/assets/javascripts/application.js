@@ -20,4 +20,5 @@
 $(() => {
   firearmsClickHandlers()
   barrelsClickHandlers()
+  outingsClickHandlers()
 })

@@ -18,6 +18,7 @@
           <% if user_signed_in? %>
           <%= link_to  "Firearms", firearms_path, class: "btn btn-outline-success", data: {'list-firearms-link' => true} %>
           <%= link_to  "Barrels", barrels_path, class: "btn btn-outline-success", data: {'list-barrels-link' => true} %>
+          <%= link_to  "Outings", outings_path, class: "btn btn-outline-success", data: {'list-outings-link' => true} %>
           <%= link_to "Edit profile", edit_user_registration_path, class: 'nav-item nav-link text-white' %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-item nav-link text-white'  %>
           <% else %>

@@ -23,7 +23,7 @@ const barrelsClickHandlers = () => {
   // Begin Barrels add link
 }
 
-// Prototype code for Firearm
+// Prototype code for Barrels
 function Barrel(barrel) {
   this.id = barrel.id
   this.caliber = barrel.caliber
@@ -55,6 +55,12 @@ Barrel.prototype.formatIndex = function () {
           <p>${this.rifling}</p>
         <h4>Firearm</h4>
           <p><a href="/firearms/${this.firearm.id}">${this.firearm.name}</a></p>
+          <br>
+         <div class="d-flex justify-content-around">
+         <a href="/barrels/${this.id}" class="btn btn-primary">Show</a>
+         <a href="/barrels/${this.id}/edit" class="btn btn-warning">Edit</a>
+         <button class="btn btn-danger">Add Delete</button>
+         </div>
         </div>
         </div>
         </div>

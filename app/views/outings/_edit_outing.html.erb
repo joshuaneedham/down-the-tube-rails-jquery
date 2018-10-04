@@ -1,0 +1,24 @@
+<h1>Edit Outing</h1>
+<%= form_for(@outing) do |f| %>
+<% if outing.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(outing.errors.count, "error") %> prohibited this barrel from being saved:</h2>
+  <ul>
+    <% outing.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<h5>Current Date:</h5>
+<%= outing.date.strftime("%B %d, %Y") %>
+<h5><%= f.label "New Date if Necessary" %></h5>
+<%= f.date_select('date', order: [:month, :day, :year]) %>
+
+<h5><%= f.label "Firearm used" %></h5>
+<%= f.collection_select :firearm_id, current_user.firearms, :id, :name, include_blank: "Select firearm" %>
+<h5><%= f.label :shots_fired %></h5>
+<%= f.text_field :shots_fired, id: :outing_shots_fired %>
+<br><br>
+<%= f.submit 'Edit Outing', class: "btn btn-primary" %>
+<% end %>
