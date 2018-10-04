@@ -9,3 +9,5 @@ To continue tracking a barrels round count outings can be created which allow a 
 In the future I plan on incorporating the ability to include images of targets, match scores, or images of game taken.
 
 Thanks for checking out the app and may your shots be straight and your aim true.
+
+This version of the app utilizes JavaScript, ajax, and jQuery to provide a smoother more user friendly application and will eventually be portd into a fully decoupled Rails + React application for my final project.
