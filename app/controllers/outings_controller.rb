@@ -12,6 +12,10 @@ class OutingsController < ApplicationController
 
   def show
     @outing = Outing.find_by(id: params[:id])
+    respond_to do |o|
+      o.html { render :show }
+      o.json {render json: @outings}
+    end
   end
 
   def new

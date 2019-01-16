@@ -1,5 +1,7 @@
 class Barrel < ApplicationRecord
   belongs_to :firearm
+  has_many :outings
+
 
   def firearms_attributes=(firearm_attributes)
     firearm_attributes.values.each do |firearm_attribute|

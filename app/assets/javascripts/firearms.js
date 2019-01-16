@@ -29,6 +29,7 @@ function Firearm(firearm) {
   this.name = firearm.name
   this.description = firearm.description
   this.firearm_type = firearm.firearm_type
+  this.firearm_outings = firearm.outings
 }
 
 Firearm.prototype.formatIndex = function () {
@@ -37,16 +38,12 @@ Firearm.prototype.formatIndex = function () {
   <div class="p-3">
   <div class="card mb-3" style="min-width: 18rem;">
   <div class="card-body">
-  <h1>${this.name}</h1>
-  <h4>Firearm Description</h4>
-  <p>${this.description}</p>
-  <h4>Firearm Type</h4>
-  <p>${this.firearm_type}</p>
-  <br>
+  <h1><a href="/firearms/${this.id}">${this.name}</a></h1>
+    <br>
+    <h4>Outings</h4>
+    <p>//${this}</p>
   <div class="d-flex justify-content-around">
   <a href="/firearms/${this.id}" class="btn btn-primary">Show</a>
-  <a href="/firearms/${this.id}/edit" class="btn btn-warning">Edit</a>
-  <button class="btn btn-danger">Add Delete</button>
   </div>
   </div>
   </div>

@@ -22,8 +22,9 @@ const outingsClickHandlers = () => {
 
 
 function Outing(outing) {
+  let options = {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true}
   this.id = outing.id
-  this.date = outing.date
+  this.date = new Date(outing.date).toLocaleDateString('en-US', options)
   this.outing_type = outing.outing_type
   this.shots_fired = outing.shots_fired
   this.firearm = outing.firearm

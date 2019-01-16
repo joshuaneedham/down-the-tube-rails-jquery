@@ -1,15 +1,5 @@
 <h1><%= current_user.first_name %>'s Outings</h1>
-<div class="">
 
-</div>
-    <p>Below you will see the last firearm you used for each of the outing types available.</p>
-      <h2>Range</h2>
-      <%= render  partial: "range" || "Please add Range outing." %>
-      <h2>Hunting</h2>
-      <%= render partial: "hunting" || "Please add Hunting outing." %>
-      <h2>Match - Competition</h2>
-      <%= render partial: "comp_match" || "Please add Match or Competition outing" %>
-      </div>
 <div class="d-md-flex flex-md-wrap">
   <div class="card-group">
     <% @outings.each do |o| %>

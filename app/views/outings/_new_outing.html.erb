@@ -14,8 +14,7 @@
   <h5><%= f.label :outing_type, "Type" %></h5>
     <%= f.select :outing_type, options_for_select(["Match - Competition","Hunting","Range",], @outing.outing_type), selected: true %>
   <h5><%= f.label :date %></h5>
-    <%= f.date_select('date', order: [:month, :day, :year]) %>
-
+    <%= f.datetime_select('date', order: [:month, :day, :year], :ampm => true, :minute_step => 5) %>
   <h5><%= f.label "Select firearm" %></h5>
     <%= f.collection_select :firearm_id, current_user.firearms, :id, :name, include_blank: "Select firearm" %>
   <h5><%= f.label :shots_fired %></h5>

@@ -34,7 +34,7 @@ gem 'jbuilder'
 # gem 'capistrano-rails', group: :development
 
 # Serializer
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers'
 # Devise and Omniauth
 gem 'devise'
 gem 'omniauth'

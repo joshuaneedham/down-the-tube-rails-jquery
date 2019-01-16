@@ -12,9 +12,9 @@ class FirearmsController < ApplicationController
 
   def show
     @firearm = Firearm.find_by(id: params[:id])
-    respond_to do |format|
-      format.html { render :show }
-      format.json {render json: @firearm}
+    respond_to do |f|
+      f.html { render :show }
+      f.json {render json: @firearm}
     end
   end
 
