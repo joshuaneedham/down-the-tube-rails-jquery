@@ -29,25 +29,31 @@ function Firearm(firearm) {
   this.name = firearm.name
   this.description = firearm.description
   this.firearm_type = firearm.firearm_type
-  this.firearm_outings = firearm.outings
+  this.firearm_outings = [];
+  firearm.outings.forEach(outing => {
+    this.firearm_outings.push(outing.outing_type);
+  });
+  this.firearm_barrel = [];
+  firearm.barrels.forEach(barrel => {
+    this.firearm_barrel.push(barrel.caliber);
+  });
 }
 
 Firearm.prototype.formatIndex = function () {
   console.log(this)
   let firearmHtml = `
-  <div class="p-3">
-  <div class="card mb-3" style="min-width: 18rem;">
-  <div class="card-body">
-  <h1><a href="/firearms/${this.id}">${this.name}</a></h1>
-    <br>
-    <h4>Outings</h4>
-    <p>//${this}</p>
-  <div class="d-flex justify-content-around">
-  <a href="/firearms/${this.id}" class="btn btn-primary">Show</a>
-  </div>
-  </div>
-  </div>
-  </div>
+              <div class="p-3">
+              <div class="card mb-3" style="min-width: 18rem;">
+              <div class="card-body">
+              <h1><a href="/firearms/${this.id}">${this.name}</a></h1>
+              <h4>Barrel</h4>
+                <p>${this.firearm_barrel}</p> 
+              <div class="d-flex justify-content-around">
+              <a href="/firearms/${this.id}" class="btn btn-primary">Show</a>
+              </div>
+              </div>
+              </div>
+              </div>
    `
   return firearmHtml
 } // End Firearm prototype

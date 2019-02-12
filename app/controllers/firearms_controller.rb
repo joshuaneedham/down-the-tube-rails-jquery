@@ -3,7 +3,7 @@ class FirearmsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @firearms = current_user.firearms.includes(:barrels).all
+    @firearms = current_user.firearms.includes(:outings).all
     respond_to do |f|
       f.html { render :index }
       f.json {render json: @firearms}

@@ -23,7 +23,7 @@ const barrelsClickHandlers = () => {
   // Begin Barrels add link
 }
 
-// Prototype code for Barrels
+// Prototype code for Barrels -  Use Class constructor for assessment
 function Barrel(barrel) {
   this.id = barrel.id
   this.caliber = barrel.caliber
@@ -38,32 +38,32 @@ function Barrel(barrel) {
 Barrel.prototype.formatIndex = function () {
   console.log(this)
   let barrelHtml = `
-        <div class="p-3">
-        <div class="card mb-3" style="min-width: 18rem;">
-        <div class="card-body">
-        <h4>Caliber</h4>
-          <p>${this.caliber}</p>
-        <h4>Type</h4>
-          <p>${this.barrel_type}</p>
-        <h4>Length</h4>
-          <p>${this.length}</p>
-        <h4>Twist</h4>
-          <p>${this.twist}</p>
-        <h4>Contour</h4>
-          <p>${this.contour}</p>
-        <h4>Rifling</h4>
-          <p>${this.rifling}</p>
-        <h4>Firearm</h4>
-          <p><a href="/firearms/${this.firearm.id}">${this.firearm.name}</a></p>
-          <br>
-         <div class="d-flex justify-content-around">
-         <a href="/barrels/${this.id}" class="btn btn-primary">Show</a>
-         <a href="/barrels/${this.id}/edit" class="btn btn-warning">Edit</a>
-         <button class="btn btn-danger">Add Delete</button>
-         </div>
-        </div>
-        </div>
-        </div>
-         `
+<div class="p-3">
+<div class="card mb-3" style="min-width: 18rem;">
+<div class="card-body">
+<h4>Caliber</h4>
+<p>${this.caliber}</p>
+<h4>Type</h4>
+<p>${this.barrel_type}</p>
+<h4>Length</h4>
+<p>${this.length}</p>
+<h4>Twist</h4>
+<p>${this.twist}</p>
+<h4>Contour</h4>
+<p>${this.contour}</p>
+<h4>Rifling</h4>
+<p>${this.rifling}</p>
+<h4>Firearm</h4>
+<p><a href="/firearms/${this.firearm.id}">${this.firearm.name}</a></p>
+<br>
+<div class="d-flex justify-content-around">
+<a href="/barrels/${this.id}" class="btn btn-primary">Show</a>
+<a href="/barrels/${this.id}/edit" class="btn btn-warning">Edit</a>
+<button class="btn btn-danger">Add Delete</button>
+</div>
+</div>
+</div>
+</div>
+`
   return barrelHtml
 } // End Barrel prototype
