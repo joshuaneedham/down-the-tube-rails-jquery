@@ -1,42 +1,60 @@
 // Hijack the click function for the 'barrels' button in the navigation.
 const barrelsClickHandlers = () => {
   // Using data attribute for targeting instead of .class or #id
-  $('[data-list-barrels-link]').on('click', (e) => {
-    e.preventDefault()
-    history.pushState(null, null, "barrels")
+  $("[data-list-barrels-link]").on("click", e => {
+    e.preventDefault();
+    history.pushState(null, null, "barrels");
     // Create promise using fetch
-    fetch('/barrels.json')
+    fetch("/barrels.json")
       .then(res => res.json())
       // Start working with the json data response
       .then(barrels => {
-        console.log(barrels)
-        $('#app-container').html('')
+        console.log(barrels);
+        $("#app-container").html("");
         barrels.forEach(barrel => {
-          let newbarrel = new Barrel(barrel)
-          let barrelHtml = newbarrel.formatIndex()
-          console.log(barrelHtml)
-          $('#app-container').append(barrelHtml).wrapInner('<div class="d-md-flex flex-md-wrap"><div class="card-group"></div></div>')
+          let newbarrel = new Barrel(barrel);
+          let barrelHtml = newbarrel.formatIndex();
+          console.log(barrelHtml);
+          $("#app-container")
+            .append(barrelHtml)
+            .wrapInner(
+              '<div class="d-md-flex flex-md-wrap"><div class="card-group"></div></div>'
+            );
         });
-        $('#app-container').append('<div class="d-flex justify-content-around"><a class="btn btn-outline-success" href="/barrels/new">New Barrel</a></div>')
-      })
-  }) // End Barrels Link
+        $("#app-container").append(
+          '<div class="d-flex justify-content-around"><a class="btn btn-outline-success" href="/barrels/new">New Barrel</a></div>'
+        );
+      });
+  }); // End Barrels Link
   // Begin Barrels add link
-}
+};
 
 // Prototype code for Barrels -  Use Class constructor for assessment
-function Barrel(barrel) {
-  this.id = barrel.id
-  this.caliber = barrel.caliber
-  this.barrel_type = barrel.barrel_type
-  this.length = barrel.length
-  this.twist = barrel.twist
-  this.contour = barrel.contour
-  this.rifling = barrel.rifling
-  this.firearm = barrel.firearm
-}
+// function Barrel(barrel) {
+//   this.id = barrel.id
+//   this.caliber = barrel.caliber
+//   this.barrel_type = barrel.barrel_type
+//   this.length = barrel.length
+//   this.twist = barrel.twist
+//   this.contour = barrel.contour
+//   this.rifling = barrel.rifling
+//   this.firearm = barrel.firearm
+// }
 
-Barrel.prototype.formatIndex = function () {
-  console.log(this)
+class Barrel {
+  constructor(barrel) {
+    this.id = barrel.id;
+    this.caliber = barrel.caliber;
+    this.barrel_type = barrel.barrel_type;
+    this.length = barrel.length;
+    this.twist = barrel.twist;
+    this.contour = barrel.contour;
+    this.rifling = barrel.rifling;
+    this.firearm = barrel.firearm;
+  }
+}
+Barrel.prototype.formatIndex = function() {
+  console.log(this);
   let barrelHtml = `
 <div class="p-3">
 <div class="card mb-3" style="min-width: 18rem;">
@@ -64,6 +82,6 @@ Barrel.prototype.formatIndex = function () {
 </div>
 </div>
 </div>
-`
-  return barrelHtml
-} // End Barrel prototype
+`;
+  return barrelHtml;
+}; // End Barrel prototype
