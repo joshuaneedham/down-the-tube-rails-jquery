@@ -53,6 +53,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'seed_dump', '~> 3.3', '>= 3.3.1'
 end
 
 group :development do

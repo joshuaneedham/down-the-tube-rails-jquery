@@ -20,7 +20,6 @@ class OutingsController < ApplicationController
 
   def new
     @outing = current_user.outings.build
-    @outing.firearms.build
   end
 
   def create

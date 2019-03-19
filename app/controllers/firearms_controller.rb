@@ -20,8 +20,7 @@ class FirearmsController < ApplicationController
 
   def new
     @firearm = current_user.firearms.build
-    @firearm.barrels.build
-    # @firearm.outings.build
+
   end
 
   def edit; end

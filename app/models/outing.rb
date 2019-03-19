@@ -3,27 +3,27 @@ class Outing < ApplicationRecord
   belongs_to :user
   has_many :firearms, through: :user
   has_many :barrels, through: :firearms
-  scope :match_comps, -> { where(outing_type: "Match - Competition") }
-  scope :hunts, -> { where(outing_type: "Hunting") }
-  scope :ranges, -> { where(outing_type: "Range") }
+  # scope :match_comps, -> { where(outing_type: "Match - Competition") }
+  # scope :hunts, -> { where(outing_type: "Hunting") }
+  # scope :ranges, -> { where(outing_type: "Range") }
 
-  def self.comp_match
-    if !match_comps.empty?
-      match_comps.last.firearm.name
-    end
-  end
+  # def self.comp_match
+  #   if !match_comps.empty?
+  #     match_comps.last.firearm.name
+  #   end
+  # end
 
-  def self.hunting
-    if !hunts.empty?
-      hunts.last.firearm.name
-    end
-  end
+  # def self.hunting
+  #   if !hunts.empty?
+  #     hunts.last.firearm.name
+  #   end
+  # end
 
-  def self.range
-    if !ranges.empty?
-      ranges.last.firearm.name
-    end
-  end
+  # def self.range
+  #   if !ranges.empty?
+  #     ranges.last.firearm.name
+  #   end
+  # end
 
   def firearms_attributes=(firearm_attributes)
     firearm_attributes.values.each do |firearm_attribute|

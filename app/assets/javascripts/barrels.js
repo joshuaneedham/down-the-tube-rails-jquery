@@ -15,11 +15,7 @@ const barrelsClickHandlers = () => {
           let newbarrel = new Barrel(barrel);
           let barrelHtml = newbarrel.formatIndex();
           console.log(barrelHtml);
-          $("#app-container")
-            .append(barrelHtml)
-            .wrapInner(
-              '<div class="d-md-flex flex-md-wrap"><div class="card-group"></div></div>'
-            );
+          $("#app-container").append(barrelHtml);
         });
         $("#app-container").append(
           '<div class="d-flex justify-content-around"><a class="btn btn-outline-success" href="/barrels/new">New Barrel</a></div>'
@@ -51,14 +47,13 @@ class Barrel {
     this.contour = barrel.contour;
     this.rifling = barrel.rifling;
     this.firearm = barrel.firearm;
+    this.shots_fired = barrel.shots_fired;
   }
 }
 Barrel.prototype.formatIndex = function() {
   console.log(this);
   let barrelHtml = `
-<div class="p-3">
-<div class="card mb-3" style="min-width: 18rem;">
-<div class="card-body">
+<div>
 <h4>Caliber</h4>
 <p>${this.caliber}</p>
 <h4>Type</h4>
@@ -71,15 +66,15 @@ Barrel.prototype.formatIndex = function() {
 <p>${this.contour}</p>
 <h4>Rifling</h4>
 <p>${this.rifling}</p>
+<h4>Total Shots Fired</h4>
+<p>${this.shots_fired}</p>
 <h4>Firearm</h4>
 <p><a href="/firearms/${this.firearm.id}">${this.firearm.name}</a></p>
 <br>
-<div class="d-flex justify-content-around">
-<a href="/barrels/${this.id}" class="btn btn-primary">Show</a>
-<a href="/barrels/${this.id}/edit" class="btn btn-warning">Edit</a>
+<div>
+<a href="/barrels/${this.id}" class="btn btn-primary">Show</a>&nbsp;
+<a href="/barrels/${this.id}/edit" class="btn btn-warning">Edit</a>&nbsp;
 <button class="btn btn-danger">Add Delete</button>
-</div>
-</div>
 </div>
 </div>
 `;

@@ -1,6 +1,6 @@
 class Barrel < ApplicationRecord
   belongs_to :firearm
-  has_many :outings
+  
 
 
   def firearms_attributes=(firearm_attributes)
@@ -9,4 +9,13 @@ class Barrel < ApplicationRecord
       self.firearms << firearm
     end
   end
+  
+  def shots_fired
+    shots = 0
+    self.firearm.outings.each do |outing|
+      shots += outing.shots_fired
+    end
+    shots
+  end
+  
 end
