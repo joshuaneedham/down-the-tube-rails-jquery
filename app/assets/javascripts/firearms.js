@@ -40,7 +40,17 @@ const firearmsClickHandlers = () => {
 
   $(document).on("click", ".next-firearm", function() {
     let id = $(this).attr("data-id");
-    fetch(`firearms/${id}/next`);
+    fetch(`firearms/${id}/next`)
+      // On success use .then to start working with the data returned from the promise.
+      .then(res => res.json())
+      // Start working with the json data response
+      .then(firearm => {
+        $("#app-container").html("");
+        let newFirearm = new Firearm(firearm);
+        let firearmShow = newFirearm.formatShow();
+        console.log(firearmShow);
+        $("#app-container").append(firearmShow);
+      });
   });
 };
 
@@ -103,6 +113,8 @@ Firearm.prototype.formatShow = function() {
       )
       .join("")}</p>
 </div>
-<button class="btn btn-success next-firearm">Next Firearm</button>`;
+<button class="btn btn-success next-firearm" data-id="${
+    this.id
+  }" >Next Firearm</button>`;
   return firearmShow;
 };

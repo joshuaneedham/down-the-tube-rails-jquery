@@ -22,13 +22,9 @@ class FirearmsController < ApplicationController
     @firearm = current_user.firearms.build
   end
 
-  def next
-    @next_firearm = @firearm.next
-    render json: @next_firearm
-  end
-
+  
   def edit; end
-
+  
   def create
     @firearm = current_user.firearms.build(firearm_params)
     if @firearm.save
@@ -37,7 +33,12 @@ class FirearmsController < ApplicationController
       render :new
     end
   end
-
+  
+  def next
+    @next_firearm = @firearm.next
+    render json: @next_firearm
+  end
+  
   def update
     if @firearm.update(firearm_params)
       redirect_to @firearm, notice: 'Firearm was successfully updated'
