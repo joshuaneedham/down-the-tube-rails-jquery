@@ -1,5 +1,5 @@
 User.create!([
-  {email: "jamesmadison2a@gmail.com", password: "changeme", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2019-02-13 22:07:16", last_sign_in_at: "2019-02-13 22:07:16", current_sign_in_ip: "::1", last_sign_in_ip: "::1", provider: "facebook", uid: "10215323990756223", name: "Joshua Needham", image: "http://graph.facebook.com/v2.10/10215323990756223/picture"}
+  {email: "test@test.com", password: "changeme", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2019-02-13 22:07:16", last_sign_in_at: "2019-02-13 22:07:16", current_sign_in_ip: "::1", last_sign_in_ip: "::1", provider: "facebook", uid: "10215323990756223", name: "Joshua Needham", image: "http://graph.facebook.com/v2.10/10215323990756223/picture"}
   ])
     Firearm.create!([
       {name: "Kelbly's NYX", firearm_type: "Bolt-Action", description: "Custom precision rifle", user_id: 1},

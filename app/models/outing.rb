@@ -2,7 +2,9 @@ class Outing < ApplicationRecord
   belongs_to :firearm
   belongs_to :user
   has_many :firearms, through: :user
-  has_many :barrels, through: :firearms
+  has_many :barrels, through: :firearm
+  has_many :barrel_outings
+  has_many :used_barrels, through: :barrel_outings, source: :barrel
   # scope :match_comps, -> { where(outing_type: "Match - Competition") }
   # scope :hunts, -> { where(outing_type: "Hunting") }
   # scope :ranges, -> { where(outing_type: "Range") }

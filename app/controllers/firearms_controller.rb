@@ -1,5 +1,5 @@
 class FirearmsController < ApplicationController
-  before_action :set_firearm, only: %i[show edit update destroy]
+  before_action :set_firearm, only: %i[show edit update destroy next]
   before_action :authenticate_user!
 
   def index
@@ -20,7 +20,11 @@ class FirearmsController < ApplicationController
 
   def new
     @firearm = current_user.firearms.build
+  end
 
+  def next
+    @next_firearm = @firearm.next
+    render json: @next_firearm
   end
 
   def edit; end

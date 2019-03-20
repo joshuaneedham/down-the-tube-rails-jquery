@@ -42,6 +42,7 @@ gem 'omniauth-facebook'
 # Theme gems
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'yard'
 
 
 group :development, :test do
