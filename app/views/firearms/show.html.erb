@@ -11,7 +11,7 @@
                     <h4>Description</h4>
                     <%= @firearm.description %>
                     <h4>Current barrel:</h4>
-                    <%= link_to @firearm.barrels.last.caliber, barrel_path(@firearm.barrels.last.id)%>
+                    <%#= link_to @firearm.barrels.last.caliber, barrel_path(@firearm.barrels.last.id)%>
                     <h4><b>ADD THIS!!</b><br>Total shots fired from current barrel</h4>
                     <%#= @firearm.outings.sum(:shots_fired) %>
                     <br><br>

@@ -1,6 +1,7 @@
 class FirearmsController < ApplicationController
-  before_action :set_firearm, only: %i[show edit update destroy next]
+  before_action :set_firearm, only: %i[create show edit update destroy next]
   before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def index
     @firearms = current_user.firearms.includes(:outings).all
@@ -20,15 +21,18 @@ class FirearmsController < ApplicationController
 
   def new
     @firearm = current_user.firearms.build
+    respond_to do |f|
+      f.html
+      f.js
+    end
   end
-
   
   def edit; end
   
   def create
     @firearm = current_user.firearms.build(firearm_params)
     if @firearm.save
-      redirect_to @firearm, notice: 'Your new firearm was created'
+      redirect_to json: @firearms, layout: false
     else
       render :new
     end
@@ -41,7 +45,7 @@ class FirearmsController < ApplicationController
   
   def update
     if @firearm.update(firearm_params)
-      redirect_to @firearm, notice: 'Firearm was successfully updated'
+      render json: @firearms, notice: 'Firearm was successfully updated'
     else
       render :edit
     end
@@ -49,7 +53,7 @@ class FirearmsController < ApplicationController
 
   def destroy
     @firearm.destroy
-    redirect_to firearms_path, notice: 'Firearm was successfully destroy. A democrate loves you.'
+    redirect_to @firearms_path, notice: 'Firearm was successfully destroy. A democrate loves you.'
   end
 
   private
