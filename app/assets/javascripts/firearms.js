@@ -63,7 +63,8 @@ const firearmsClickHandlers = () => {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
-        $("#new_firearm").val("");
+        //need to append to dom
+        //need to clear the form
       }
     });
 
