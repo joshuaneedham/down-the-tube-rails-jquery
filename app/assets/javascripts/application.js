@@ -16,9 +16,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-
 $(() => {
-  firearmsClickHandlers()
-  barrelsClickHandlers()
-  outingsClickHandlers()
-})
+  firearmsClickHandlers();
+  barrelsClickHandlers();
+  outingsClickHandlers();
+});
