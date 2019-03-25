@@ -11,13 +11,15 @@ const barrelsClickHandlers = () => {
       .then(barrels => {
         console.log(barrels);
         $("#app-container").html("");
+        const $barrelsDiv = $('<div id="barrels"></div>');
+        $("#app-container").append($barrelsDiv);
         barrels.forEach(barrel => {
           let newbarrel = new Barrel(barrel);
           let barrelHtml = newbarrel.formatIndex();
           console.log(barrelHtml);
-          $("#app-container").append(barrelHtml);
+          $("#barrels").append(barrelHtml);
         });
-        $("#app-container").append(
+        $("#barrels").append(
           '<div class="d-flex justify-content-around"><a class="btn btn-outline-success" href="/barrels/new">New Barrel</a></div>'
         );
       });
@@ -53,7 +55,7 @@ class Barrel {
 Barrel.prototype.formatIndex = function() {
   console.log(this);
   let barrelHtml = `
-<div>
+<div id="barrel">
 <h4>Caliber</h4>
 <p>${this.caliber}</p>
 <h4>Type</h4>

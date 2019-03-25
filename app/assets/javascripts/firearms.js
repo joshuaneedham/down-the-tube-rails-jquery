@@ -11,60 +11,44 @@ const firearmsClickHandlers = () => {
       // Start working with the json data response
       .then(firearms => {
         $("#app-container").html("");
+        const $firearmsDiv = $('<div id="firearms"></div>');
+        $("#app-container").append($firearmsDiv);
         firearms.forEach(firearm => {
           let newFirearm = new Firearm(firearm);
           let firearmHtml = newFirearm.formatIndex();
           console.log(firearmHtml);
-          $("#app-container").append(firearmHtml);
+          $("#firearms").append(firearmHtml);
         });
-        $("#app-container").append(`
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#firearmModalForm">New Firearm</button>
-
-        <!-- Modal -->
-          <div class="modal fade" id="firearmModalForm" tabindex="-1" role="dialog" aria-labelledby="Add new Firearm" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="ModalLabel">Add New Firearm</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form class="new_firearm" id="new_firearm" action="/firearms" accept-charset="UTF-8" method="post">
-                    <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="S4u+eK+WIjuxmb5UbjF678qZiw7DxB80gPP0G1f0SO+pFoL4Pi4vktxdZNH5r5vNxNG73EZ1ZLR0MWSZadIEDQ==">
-                  <h5><label for="firearm_name">Name</label></h5>
-                      <input type="text" name="firearm[name]" id="firearm_name"> <br>
-                  <h5><label for="firearm_firearm_type">Type</label></h5>
-                    <select name="firearm[firearm_type]" id="firearm_firearm_type"><option value="Bolt-Action">Bolt-Action</option>
-                      <option value="Semi-Auto">Semi-Auto</option>
-                      <option value="Muzzle Loader">Muzzle Loader</option>
-                      <option value="Shotgun">Shotgun</option></select>
-                  <h5><label for="firearm_description">Description</label></h5>
-                    <textarea name="firearm[description]" id="firearm_description"></textarea> <br>
-                  <input type="submit" name="commit" value="Create Firearm" class="btn btn-primary" data-create-firearm-link="true" data-disable-with="Create Firearm">
-              </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        $("#firearms").append(`
+        <form class="new_firearm" id="new_firearm" action="/firearms.json" accept-charset="UTF-8" method="post">
+        <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="S4u+eK+WIjuxmb5UbjF678qZiw7DxB80gPP0G1f0SO+pFoL4Pi4vktxdZNH5r5vNxNG73EZ1ZLR0MWSZadIEDQ==">
+      <h5><label for="firearm_name">Name</label></h5>
+          <input type="text" name="firearm[name]" id="firearm_name"> <br>
+      <h5><label for="firearm_firearm_type">Type</label></h5>
+        <select name="firearm[firearm_type]" id="firearm_firearm_type"><option value="Bolt-Action">Bolt-Action</option>
+          <option value="Semi-Auto">Semi-Auto</option>
+          <option value="Muzzle Loader">Muzzle Loader</option>
+          <option value="Shotgun">Shotgun</option></select>
+      <h5><label for="firearm_description">Description</label></h5>
+        <textarea name="firearm[description]" id="firearm_description"></textarea> <br>
+      <input type="submit" name="commit" value="Create Firearm" class="btn btn-primary" data-create-firearm-link="true" data-disable-with="Create Firearm">
+  </form>
     `);
       });
   });
 
   $(document).on("submit", "#new_firearm", function(e) {
     e.preventDefault();
+    // console.log(this);
+    data = $(this).serialize();
 
     $.ajax({
       type: "POST",
-      url: this.action,
-      data: $(this).serialize(),
-      success: function(response) {
-        //need to append to dom
-        //need to clear the form
+      url: "/firearms.json",
+      data: data,
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
       }
     });
 
@@ -80,11 +64,11 @@ const firearmsClickHandlers = () => {
       .then(res => res.json())
       // Start working with the json data response
       .then(firearm => {
-        $("#app-container").html("");
+        $("#firearms").html("");
         let newFirearm = new Firearm(firearm);
         let firearmShow = newFirearm.formatShow();
         console.log(firearmShow);
-        $("#app-container").append(firearmShow);
+        $("#firearms").append(firearmShow);
       });
   });
 
@@ -96,17 +80,17 @@ const firearmsClickHandlers = () => {
       .then(res => res.json())
       // Start working with the json data response
       .then(firearm => {
-        $("#app-container").html("");
+        $("#firearms").html("");
         let newFirearm = new Firearm(firearm);
         let firearmShow = newFirearm.formatShow();
         console.log(firearmShow);
-        $("#app-container").append(firearmShow);
+        $("#firearms").append(firearmShow);
       });
   });
 
-  $(document).on("", function(e) {
-    e.preventDefault();
-  });
+  // $(document).on("", function(e) {
+  //   e.preventDefault();
+  // });
 };
 
 // class Firearm
@@ -134,7 +118,7 @@ class Firearm {
 Firearm.prototype.formatIndex = function() {
   console.log(this);
   let firearmHtml = `
-  <div id="firearms">
+  <div id="firearm">
   <h1><a href="/firearms/${this.id}.json" data-id="${
     this.id
   }" class="show_link">

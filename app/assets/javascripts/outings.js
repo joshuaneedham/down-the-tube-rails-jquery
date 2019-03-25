@@ -8,13 +8,15 @@ const outingsClickHandlers = () => {
       .then(res => res.json()) // Start working with the json data response
       .then(outings => {
         $("#app-container").html("");
+        const $outingsDiv = $('<div id="outings"></div>');
+        $("#app-container").append($outingsDiv);
         outings.forEach(outing => {
           let newOuting = new Outing(outing);
           let outingHtml = newOuting.formatIndex();
           console.log(outingHtml);
-          $("#app-container").append(outingHtml);
+          $("#outings").append(outingHtml);
         });
-        $("#app-container").append(
+        $("#outings").append(
           '<div class="d-flex justify-content-around"><a class="btn btn-outline-success" href="/outings/new">New Outing</a></div>'
         );
       });
@@ -42,7 +44,7 @@ function Outing(outing) {
 Outing.prototype.formatIndex = function() {
   console.log(this);
   let outingHTML = `
-    <div>
+    <div id="outing">
       <h3>${this.outing_type}</h3>
       <h4>Date of Outing</h4>
         <p>${this.date}</p>
