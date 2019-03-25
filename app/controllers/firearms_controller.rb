@@ -28,7 +28,10 @@ class FirearmsController < ApplicationController
   def create
     @firearm = current_user.firearms.build(firearm_params)
     if @firearm.save
-      redirect_to json: @firearms
+      respond_to do |nf|
+        nf.html
+        nf.json {render json: @firearms, layout: false}
+      end
     else
       render :new
     end

@@ -56,6 +56,8 @@ Barrel.prototype.formatIndex = function() {
   console.log(this);
   let barrelHtml = `
 <div id="barrel">
+<h1>Firearm</h1>
+<h6><a href="/firearms/${this.firearm.id}">${this.firearm.name}</a></h6>
 <h4>Caliber</h4>
 <p>${this.caliber}</p>
 <h4>Type</h4>
@@ -70,15 +72,13 @@ Barrel.prototype.formatIndex = function() {
 <p>${this.rifling}</p>
 <h4>Total Shots Fired</h4>
 <p>${this.shots_fired}</p>
-<h4>Firearm</h4>
-<p><a href="/firearms/${this.firearm.id}">${this.firearm.name}</a></p>
-<br>
-<div>
+<div id="action-buttons">
 <a href="/barrels/${this.id}" class="btn btn-primary">Show</a>&nbsp;
 <a href="/barrels/${this.id}/edit" class="btn btn-warning">Edit</a>&nbsp;
 <button class="btn btn-danger">Add Delete</button>
 </div>
 </div>
+<br/>
 `;
   return barrelHtml;
 }; // End Barrel prototype
