@@ -11,18 +11,26 @@ const firearmsClickHandlers = () => {
       // Start working with the json data response
       .then(firearms => {
         $("#app-container").html("");
-        const $firearmsDiv = $('<div id="firearms"></div>');
+        //Add Firearm div to hold Firearm object
+        const $firearmsDiv = $('<ul id="firearms"></ul>');
         $("#app-container").append($firearmsDiv);
         firearms.forEach(firearm => {
           let newFirearm = new Firearm(firearm);
           let firearmHtml = newFirearm.formatIndex();
-          console.log(firearmHtml);
+          //console.log(firearmHtml);
           $("#firearms").append(firearmHtml);
         });
+        //Add Sort button to sort firearms list
+        // const $sortList = $('<div id="sort-firearms-list"></div>');
+        //$("#app-container").append($sortList);
+        $("#firearms").prepend(`
+          <div><button class="btn btn-success" id="sortFunction">Sort List</button><br /></div>
+        `);
+        //Add New Firearm modal button
         const $buttonsDiv = $('<div id="add-firearm-button"></div>');
         $("#app-container").append($buttonsDiv);
         $("#add-firearm-button").append(`
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#firearmModalForm">New Firearm</button>
+          <div><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#firearmModalForm">New Firearm</button></div>
   
           <!-- Modal -->
             <div class="modal fade" id="firearmModalForm" tabindex="-1" role="dialog" aria-labelledby="Add new Firearm" aria-hidden="true">
@@ -60,25 +68,21 @@ const firearmsClickHandlers = () => {
       });
   });
 
-  // $(document).on("submit", "#new_firearm", function(e) {
-  //   e.preventDefault();
-  //   // console.log(this);
-  //   data = $(this);
+  //Sort Firearms Index List
+  $(document).on("click", "#sortFunction", function(e) {
+    e.preventDefault();
+    fetch(`/firearms.json`)
+      .then(res => res.json())
+      .then(firearms => {
+        let firearmSort = firearms.sort((a, b) => (a.name > b.name ? 1 : -1));
+        let firearmHtml = firearmSort;
+        $("firearms").html("");
+        //console.log(firearmSort);
+        console.log(firearmHtml);
+      });
+  }); //End Sort Firearms Index List
 
-  //   $.ajax({
-  //     type: "POST",
-  //     url: "/firearms.json",
-  //     data: $(this).serialize(),
-  //     dataType: "json",
-  //     success: function(data) {
-  //       console.log(data);
-  //     }
-  //   });
-
-  //   // make the post request
-  //   // take the new firearm returned from the server and append it to the dom
-  // });
-
+  //Firearm Show Page
   $(document).on("click", ".show_link", function(e) {
     e.preventDefault();
     let id = $(this).attr("data-id");
@@ -90,11 +94,12 @@ const firearmsClickHandlers = () => {
         $("#firearms").html("");
         let newFirearm = new Firearm(firearm);
         let firearmShow = newFirearm.formatShow();
-        console.log(firearmShow);
+        //console.log(firearmShow);
         $("#firearms").append(firearmShow);
       });
-  });
+  }); //End Firearm Show Page
 
+  //Next Firearm on Show Page
   $(document).on("click", ".next-firearm", function(e) {
     e.preventDefault();
     let id = $(this).attr("data-id");
@@ -106,18 +111,13 @@ const firearmsClickHandlers = () => {
         $("#firearms").html("");
         let newFirearm = new Firearm(firearm);
         let firearmShow = newFirearm.formatShow();
-        console.log(firearmShow);
+        //console.log(firearmShow);
         $("#firearms").append(firearmShow);
       });
-  });
-
-  // $(document).on("", function(e) {
-  //   e.preventDefault();
-  // });
+  }); //End Next Firearm on Show Page
 };
 
-// class Firearm
-// Prototype code for Firearm
+// Firearm Class
 class Firearm {
   constructor(firearm) {
     this.id = firearm.id;
@@ -135,21 +135,9 @@ class Firearm {
       this.firearm_barrel.push(barrel);
     });
   }
-}
+} // End Firearm Class
 
-// Firearm Index page list
-Firearm.prototype.formatIndex = function() {
-  console.log(this);
-  let firearmHtml = `
-  <div id="firearm">
-  <h1><a href="/firearms/${this.id}.json" data-id="${
-    this.id
-  }" class="show_link">
-  ${this.name}</a></h1>
-  </div>`;
-  return firearmHtml;
-}; // End Firearm prototype
-
+// OnSubmit Return with Added Firearm
 $(document).on("submit", "#new_firearm", function(e) {
   e.preventDefault();
   // console.log(this);
@@ -176,14 +164,15 @@ $(document).on("submit", "#new_firearm", function(e) {
           firearms.forEach(firearm => {
             let newFirearm = new Firearm(firearm);
             let firearmHtml = newFirearm.formatIndex();
-            console.log(firearmHtml);
+            //console.log(firearmHtml);
             $("#firearms").append(firearmHtml);
           });
           const $buttonsDiv = $('<div id="add-firearm-button"></div>');
           $("#app-container").append($buttonsDiv);
           $("#add-firearm-button").append(
-            `
+            `<br />
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#firearmModalForm">New Firearm</button>
+          <br />
   
           <!-- Modal -->
             <div class="modal fade" id="firearmModalForm" tabindex="-1" role="dialog" aria-labelledby="Add new Firearm" aria-hidden="true">
@@ -222,10 +211,26 @@ $(document).on("submit", "#new_firearm", function(e) {
         });
     }
   });
-});
+}); //End OnSubmit Return with Added Firearm
+
+// Firearm Index page list
+Firearm.prototype.formatIndex = function() {
+  //console.log(this);
+  let firearmHtml = `
+  <li>
+    <div id="firearm">
+    <h1><a href="/firearms/${this.id}.json" data-id="${
+    this.id
+  }" class="show_link">
+    ${this.name}</a></h1>
+    </div>
+  </li>`;
+  return firearmHtml;
+}; // End Firearm Index Page
+
 // Firearm Show page
 Firearm.prototype.formatShow = function() {
-  console.log(this);
+  //console.log(this);
   let firearmShow = `
   <h1>${this.name}
 <!--Show Each barrel for this single firearm -->
@@ -252,6 +257,6 @@ Firearm.prototype.formatShow = function() {
 </div>
 <button class="btn btn-success next-firearm" data-id="${
     this.id
-  }" >Next Firearm</button>`;
+  }" >Next Firearm</button><br />`;
   return firearmShow;
-};
+}; //End Firearm Show Page
