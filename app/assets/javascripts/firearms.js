@@ -79,7 +79,9 @@ const firearmsClickHandlers = () => {
         //Add Firearm div to hold Firearm object
         const $firearmsDiv = $('<ul id="firearms"></ul>');
         $("#app-container").append($firearmsDiv);
+        //Utilize a terinary operator for the sort functionality calling it on the object name property
         const firearmSort = firearms.sort((a, b) => (a.name > b.name ? 1 : -1));
+        //Redraw the DOM using the sorted list
         firearmSort.forEach(firearm => {
           let newFirearm = new Firearm(firearm);
           let firearmHtml = newFirearm.formatIndex();
