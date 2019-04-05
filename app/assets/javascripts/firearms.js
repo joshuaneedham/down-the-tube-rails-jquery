@@ -26,6 +26,7 @@ const firearmsClickHandlers = () => {
         $("#firearms").prepend(`
           <div><button class="btn btn-success" id="sortFunction">Sort List</button><br /></div>
         `);
+        // Need to learn more JS to clean up this modal and make it a single reusable piece of code
         //Add New Firearm modal button
         const $buttonsDiv = $('<div id="add-firearm-button"></div>');
         $("#firearms").append($buttonsDiv);
