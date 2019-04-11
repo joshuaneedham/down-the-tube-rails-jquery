@@ -276,6 +276,8 @@ Firearm.prototype.formatIndex = function() {
     this.id
   }" class="show_link">
     ${this.name}</a></h1>
+    <h3>Description</h3>
+      <p>${this.description}</p>
     </div>
   </li>`;
   return firearmHtml;
